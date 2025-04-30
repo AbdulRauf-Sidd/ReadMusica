@@ -1,0 +1,54 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.container{
+    background-image: url(images/loading_bg.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-clip: cover;
+    height: 100vh;
+    
+}
+.large-image {
+    position: absolute; /* Position the large image */
+    left: 15%;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    height: 60%;
+    z-index: 1; /* Ensure the image is above the grid */
+    opacity: 0.9; 
+    text-align: center;
+}
+.grid{
+    display: grid;
+    grid-template-rows: repeat(5,1fr);
+    grid-template-columns: repeat(8, 1fr);
+    height: 100%;
+    overflow: hidden;
+}
+.row{
+    border: 1px solid  rgba(251, 231, 206, 0.466);
+    height: 100%; /* Each row takes up the entire height of its grid cell */
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(9, 1fr); 
+    /* grid-template-columns: repeat(9, 1fr);  */
+
+}
+.rowsRow{
+    height: 100%;
+    border: 1px solid rgba(247, 222, 188, 0.13);
+    display: grid;
+    grid-template-columns: repeat(9, 1fr); 
+    width: 100%;
+
+
+}
+.smallGrid{
+    height: 100%;
+    border: 1px solid rgba(247, 222, 188, 0.185);
+
+}

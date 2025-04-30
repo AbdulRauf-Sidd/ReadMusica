@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+    <title>Staff.js</title>
+	
+	<!-- CSS -->
+    <link rel="stylesheet" href="css/staff.css" />
+	
+	<!-- JavaScript -->
+    <script src="js/JZZ.js"></script>
+	<script src="js/JZZ.input.Kbd.js"></script>
+	<script src="js/staff.js"></script>
+
+</head>
+<body>
+	
+	<header>
+		<a class="button" href="https://github.com/instrumentbible/staff.js/#readme">GitHub</a>
+		<a class="button" href="https://github.com/instrumentbible/staff.js/wiki/#wiki-body">Docs</a>
+		<a  href="https://github.com/instrumentbible/staff.js#readme"><h1>staff.js 🎼</h1></a>
+	</header>
+	<div id="staffDiv" class="staff"></div>
+	<script>
+
+		// options for staff
+		var options = {
+			id: "myStaff",
+			at: "staffDiv",
+			clef: "bass",
+			accidental: "flat",
+			color: "#000000"
+		}
+
+		var options2 = {
+			id: "myStaff",
+			at: "staffDiv",
+			clef: "treble",
+			accidental: "sharp",
+			color: "#003400"
+		}
+
+		// create a new staff
+		var myStaff =  new Staff(options);
+		//var myStaff2 =  new Staff(options2);
+		//myStaff.setClef('bass');
+		
+		// set notes (C major chord)
+		myStaff.set3NotesWithDistance([59, 54, 48]);
+		//myStaff2.setNotes([70,64,67]);
+		//console.log(myStaff.getNotes());
+		let positionX = 0;
+  
+  // Set interval time (in milliseconds)
+  const intervalTime = 100; // For example, move every 100 milliseconds
+  
+  // Function to move the element
+  function moveElement() {
+    // Update the position
+    positionX += 1; // Update position by 1 pixel (you can adjust this value as needed)
+    let k = document.getElementById("staffDiv");
+    // Apply the new position to the element
+    k.style.left = positionX + 'px';
+  }
+
+  const intervalId = setInterval(moveElement, 50);
+	</script>
+</body>

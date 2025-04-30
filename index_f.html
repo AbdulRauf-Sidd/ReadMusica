@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    #scorelist {
+        padding-left: 20px; /* Adjust this value for indentation */
+    }
+    li {
+        margin-bottom: 5px; /* Adjust this value for spacing between items */
+    }
+    .score {
+        display: inline-block;
+        width: 100px; /* Adjust this value for consistent spacing */
+        text-align: right;
+    }
+    #continuePopup{
+        width: 500px;
+    }
+    .continuePopupContent{
+        text-align: left;
+        margin-left: 20px;
+    }
+    .continuePopupBtn1{
+        height: 5lvh;
+        width: 50px;
+        border: 2px solid rgb(255,146,1);
+        background-color: transparent;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin: 20px;
+    }
+    .continuePopupBtn1:hover{
+        background-color:rgb(255,146,1) ;
+        
+    }
+    .high-score-popup-btn {
+        background-color: transparent;
+        border: 2px solid rgb(255, 146, 1);
+        color: rgb(255, 146, 1);
+        cursor: pointer;
+        height: 5vh;
+        width: 120px;
+        margin: 20px;
+        text-align: center;
+        line-height: 5vh;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+    }
+    .high-score-popup-btn:hover {
+        background-color: rgb(255, 146, 1);
+        color: white;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    /* Custom styles for the high score popup */
+    #continuePopup{
+        width: 500px;
+    }
+    .continuePopupContent {
+        text-align: left;
+        margin-left: 40px;
+        overflow-y: auto; /* Enable vertical scrolling */
+        max-height: 90px; /* Set a fixed height for the container */
+        
+    }
+    .continuePopupContent2 {
+        text-align: left;
+        margin-left: 40px;
+         /* Enable vertical scrolling */
+        max-height: 140px; /* Set a fixed height for the container */
+        
+    }
+    .continuePopupContent::-webkit-scrollbar {
+        width: 12px; 
+    }
+    .continuePopupContent::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+    .continuePopupContent::-webkit-scrollbar-thumb {
+        background:  rgb(255, 146, 1); 
+        border-radius: 6px; 
+    }
+    .continuePopupContent {
+        scrollbar-width: thin; 
+        scrollbar-color:  rgb(255, 146, 1) #f1f1f1; 
+    }
+    .continuePopupBtn1{
+        height: 5LVH; /* Adjusted height */
+        width: 50px; /* Adjusted width */
+        border: 2px solid rgb(255,146,1);
+        background-color: transparent;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin: 20px;
+    }
+    .continuePopupBtn1:hover{
+        background-color:rgb(255,146,1);
+    }
+    .inp{
+        background-color: transparent;
+        height: 40px; /* Adjusted height */
+        margin-top: 20px; /* Adjusted margin */
+        padding: 10px; /* Adjusted padding */
+        border: 2px solid rgb(255,146,1);
+        outline: none;
+    }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="staff/css/staff.css" />
+</head>
+<body>
+    <!-- <audio id="myAudio" loop>
+        <source src="super-mario-bros-4293.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio> -->
+    <div class="container">
+        <div class="row" id="row1">
+            <div class="cols">
+                <div class="items" id="item1"><button class="col1Btn" id="highscoreb"><b>HIGH SCORE</b></button></div>
+                <div class="items">
+                    <button id="optionsb" class="col1Btn">OPTIONS </button> <!-- Button to open the popup -->
+                    <div id="options" class="popup">
+                        <div class="popup-content">
+                            <div class="head">
+                                <span class="close-btn" id="close-popup-btn"><button class="cl" id="closeoptions">close window</button></span>
+                                <div class="popup-header">
+                                    <span class="popup-title"><b>OPTIONS</b></span>
+                                </div>
+
+                            </div>
+                            <div class="popup-body">
+                                <div class="popup-row">
+                                    <div class="popup-col">
+                                        <div class="option" id="dif">
+                                            <label class="lab" for="difficulty">Difficulty:</label>
+                                            <div class="difficulty-options">
+                                                <input type="radio" id="easy" name="seldifficulty" value="easy" checked>
+                                                <label for="easy">EASY</label>
+                                                <input type="radio" id="medium" name="seldifficulty" value="medium">
+                                                <label for="medium">MEDIUM</label>
+                                                <input type="radio" id="hard" name="seldifficulty" value="hard">
+                                                <label for="hard">HARD</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="popup-col">
+                                        <div class="option" id="oct">
+                                            <label class="lab" for="octave-range">Octave range per clef:</label>
+                                            <div class="octave-range-options">
+                                                <input type="radio" id="normal" name="octave-range" value="normal" checked>
+                                                <label for="normal">NORMAL</label>
+                                                <input type="radio" id="extended" name="octave-range" value="extended">
+                                                <label for="extended">EXTENDED</label>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="popup-row" id="rowBtn">
+                                    <div class="popup-col">
+                                        
+                                        <div class="option">
+                                            <label class="lab" for="clefs">Clefs to include:</label>
+                                            <div class="clefs-options">
+                                                <input type="checkbox" id="treble" name="CLEF" value="treble">
+                                                <label for="treble">TREBLE</label>
+                                                <input type="checkbox" id="bass" name="CLEF" value="bass">
+                                                <label for="bass">BASS</label>
+                                                <input type="checkbox" id="alto" name="CLEF" value="alto">
+                                                <label for="alto">ALTO</label>
+                                                <input type="checkbox" id="tenor" name="CLEF" value="tenor">
+                                                <label for="tenor">TENOR</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="start-btn" id="startgame">START GAME</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="level" class="popup">
+                        <div class="popup-content">
+                            <div class="head">
+                                <span class="close-btn" id="close-popup-btn"><button class="cl" id="closelevel">close window</button></span>
+                                <div class="popup-header">
+                                    <span class="popup-title"><b>LEVEL COMPLETED!</b></span>
+                                </div>
+
+                            </div>
+                            <div class="popup-body" id="continuePopup">
+                                <div class="continuePopupContent">
+                                    <p>Click "OK" to continue.</p>
+
+                                </div>
+                                <div class="continuePopupBtn">
+                                    <button class="continuePopupBtn1" id="oklevel">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="highscore" class="popup">
+                        <div class="popup-content">
+                            <div class="head">
+                                <span class="close-btn" id="close-popup-btn"><button class="cl" id="closehigh">close window</button></span>
+                                <div class="popup-header">
+                                    <span class="popup-title"><b>HIGH SCORE!</b></span>
+                                </div>
+                            </div>
+                            <div class="popup-body" id="continuePopup">
+                                <div class="continuePopupContent">
+                                    <ol id="scorelist">
+                                        
+                                    </ol>
+                                </div>
+                                <div class="continuePopupBtn">
+                                    <button class="continuePopupBtn1" id="okhigh">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="gameover" class="popup">
+                        <div class="popup-content">
+                            <div class="head">
+                                <span class="close-btn" id="close-popup-btn"><button class="cl" id="closegameover">close window</button></span>
+                                <div class="popup-header">
+                                    <span class="popup-title"><b>Game Over!</b></span>
+                                </div>
+
+                            </div>
+                            <div class="popup-body" id="continuePopup">
+                                <div class="continuePopupContent2">
+                                    <h3><span id="final-score"></span></h3>
+                                    <p id="over-message"></p><br>
+                                    <input type="text" class="inp" placeholder="Enter you name here..." id="playername">
+
+                                </div>
+                                <div class="continuePopupBtn">
+                                    <button class="continuePopupBtn1" id="savebutton">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="items" ><button class="col1Btn"><b>TUTORIAL</b></button></div>
+            </div>
+            <div class="col">
+                <div class="col2Items" id="col2Items1"><b><a href="">VISIT JAMORAMA.COM</a></b></div>
+                <div class="col2Items"><b><a href="">VISIT JAYDEMUSICA.ORG</a></b></div>
+            </div>
+        </div>
+        <div class="row" id="row2">
+            <div class="row2Col">
+                <h3>LEVEL: <span id="level-value">1</span></h3>
+                <h3>LIVES REMAINING: <span id="lives-value">3</span></h3>
+                <h3>SCORE: <span id="score-value">0</span></h3>
+            </div>
+            <div id="game-container">
+                <div id="staffDiv1"></div>
+                <div id="staffDiv2"></div>
+            </div>
+            
+        </div>
+        <div class="row" id="row3">
+            <div class="row3Cols">
+                <div class="row3ColsRows" id="row3ColsRows1">
+                    <button class="btn" id="a">A<p>1</p></button>
+                </div>
+                <div class="row3ColsRows" id="row3ColsRows2">
+                    <button class="btn" id="b">B<p>2</p></button>
+                    <button class="btn" id="c">C<p>3</p></button>
+                    <button class="btn" id="d">D<p>4</p></button>
+                </div>
+                <div class="row3ColsRows">
+                    <button class="btn" id="e">E<p>4</p></button>
+                    <button class="btn" id="f">F<p>5</p></button>
+                    <button class="btn" id="g">G<p>6</p></button>
+                </div>
+               
+               
+            </div>
+                
+        </div>
+        <div class="row4">
+            <div class="row3Cols2">
+                <h3 class="sound">ERRORS: <span id="error-value">0</span></h3>
+                <h3 class="sound">BPM: 167</h3>
+                <h3 class="sound" id="soundItem3">SOUND:
+                </h3>
+                <label>
+                    <input type="radio" name="sound" value="on" onclick="playAudio()">
+                    ON
+                </label>
+                <label>
+                    <input type="radio" name="sound" value="off" onclick="pauseAudio()" checked>
+                    OFF
+                </label>
+
+            </div>        
+        </div>
+    </div>
+    <script src="staff/js/JZZ.js"></script>
+	<script src="staff/js/JZZ.input.Kbd.js"></script>
+	<script src="staff/js/staff.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
