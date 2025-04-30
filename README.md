@@ -39,3 +39,18 @@ ReadMusica is a web-based game designed to help musicians improve their musical 
    cd readmusica
 2. **Run**
    Open Landing page html file
+
+### Contributing
+- We welcome contributions! Please follow these steps:
+
+### Fork the repository.
+- Create a new branch: git checkout -b feature-branch.
+- Make your changes and commit them: git commit -m 'Add new feature'.
+- Push to the branch: git push origin feature-branch.
+- Open a Pull Request.
+
+### License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+### Acknowledgments
+Special thanks to the contributors and the open-source community for their support and inspiration.
